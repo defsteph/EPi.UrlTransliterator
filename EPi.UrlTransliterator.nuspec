@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
 	<metadata>
-		<id>EPi.UrlTransliterator</id>
+		<id>UrlSegment.Transliteration</id>
 		<version>$version$</version>
 		<title>$title$</title>
 		<authors>$author$</authors>
@@ -9,7 +9,7 @@
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>$description$</description>
 		<copyright>Copyright Creuna AB 2016</copyright>
-		<tags>EPiServerModulePackage EPiServer Transliteration</tags>
+		<tags>EPiServerModulePackage EPiServer Url Transliteration</tags>
 		<summary>Adds transliteration for Url Segment generation.</summary>
 		<projectUrl>https://github.com/CreunaAB/EPi.UrlTransliterator</projectUrl>
 		<iconUrl>https://avatars3.githubusercontent.com/u/1013949?v=3&amp;s=200</iconUrl>
