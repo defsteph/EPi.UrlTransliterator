@@ -1,4 +1,4 @@
-﻿# URL Transliteration for EPiServer CMS 10
+﻿# URL Transliteration for EPiServer CMS
 
 ## Usage
 When generating URLs, EPiServer strips out all non-alphanumeric characters. 
