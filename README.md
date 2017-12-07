@@ -1,6 +1,6 @@
-﻿#URL Transliteration for EPiServer CMS 10
+﻿# URL Transliteration for EPiServer CMS 10
 
-##Usage
+## Usage
 When generating URLs, EPiServer strips out all non-alphanumeric characters. 
 This Add-On transliterates the proposed url segment before stripping, ensuring that urls for languages not using alphanumeric chars look nice.
 
