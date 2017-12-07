@@ -11,24 +11,23 @@ namespace EPi.UrlTransliterator {
 	internal class TransliteratingUrlSegmentGenerator : IUrlSegmentGenerator {
 		private static readonly Regex RegexInvalidSegmentNames = new Regex("^COM[0-9]([/\\.]|$)|^LPT[0-9]([/\\.]|$)|^PRN([/\\.]|$)|^CLOCK\\$([/\\.]|$)|^AUX([/\\.]|$)|^NUL([/\\.]|$)|^CON([/\\.]|$)", RegexOptions.IgnoreCase | RegexOptions.Compiled);
 		internal const string InvalidSegmentNames = "^COM[0-9]([/\\.]|$)|^LPT[0-9]([/\\.]|$)|^PRN([/\\.]|$)|^CLOCK\\$([/\\.]|$)|^AUX([/\\.]|$)|^NUL([/\\.]|$)|^CON([/\\.]|$)";
-		private readonly Regex defaultRegexFindInvalidUrlChars;
 		private readonly Func<string, MatchCollection> defaultFindInvalidUrlMethod;
 		private readonly Regex defaultRegexValidUrlChars;
 		private readonly UrlSegmentOptions defaultOptions;
 		public TransliteratingUrlSegmentGenerator(UrlSegmentOptions urlSegmentOptions) {
 			urlSegmentOptions = urlSegmentOptions ?? new UrlSegmentOptions();
-			defaultRegexValidUrlChars = new Regex($"^[{urlSegmentOptions.ValidUrlCharacters}]+$", RegexOptions.Compiled);
-			defaultRegexFindInvalidUrlChars = new Regex($"[^{urlSegmentOptions.ValidUrlCharacters}]{{1}}", RegexOptions.Compiled);
+			defaultRegexValidUrlChars = new Regex($"^[{urlSegmentOptions.ValidCharacters}]+$", RegexOptions.Compiled);
+			var defaultRegexFindInvalidUrlChars = new Regex($"[^{urlSegmentOptions.ValidCharacters}]{{1}}", RegexOptions.Compiled);
 			defaultFindInvalidUrlMethod = s => defaultRegexFindInvalidUrlChars.Matches(s);
 			defaultOptions = urlSegmentOptions;
 		}
 		public bool IsValid(string segment, UrlSegmentOptions options) {
-			return options == null ? defaultRegexValidUrlChars.IsMatch(segment) : Regex.IsMatch(segment, $"^[{options.ValidUrlCharacters}]+$");
+			return options == null ? defaultRegexValidUrlChars.IsMatch(segment) : Regex.IsMatch(segment, $"^[{options.ValidCharacters}]+$");
 		}
 		public string Create(string proposedSegment, UrlSegmentOptions options) {
 			var segmentOption = options ?? defaultOptions;
 			var charMap = segmentOption.CharacterMap;
-			var invalidCharRegex = options != null ? (s => Regex.Matches(s, $"[^{options.ValidUrlCharacters}]{{1}}")) : defaultFindInvalidUrlMethod;
+			var invalidCharRegex = options != null ? (s => Regex.Matches(s, $"[^{options.ValidCharacters}]{{1}}")) : defaultFindInvalidUrlMethod;
 			var cleanedSegment = ReplaceIllegalNames(ReplaceIllegalChars(Transliterate(proposedSegment), invalidCharRegex, charMap));
 			while(cleanedSegment.Contains("--")) {
 				cleanedSegment = cleanedSegment.Replace("--", "-");

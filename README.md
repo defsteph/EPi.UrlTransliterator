@@ -12,3 +12,7 @@ Using this Add-On, the generated URL for "伤寒论 勘误" becomes "shang-han-l
 
 ### Release 1.0.0
 Initial release.
+
+### Release 2.0.0
+Now supports EPiServer CMS 11.
+Added MIT License.

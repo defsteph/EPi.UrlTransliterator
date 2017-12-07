@@ -7,7 +7,8 @@ namespace EPi.UrlTransliterator {
 	[ModuleDependency(typeof(ServiceContainerInitialization)), InitializableModule]
 	public class UrlSegmentGeneratorInitialization : IConfigurableModule {
 		void IConfigurableModule.ConfigureContainer(ServiceConfigurationContext context) {
-			context.Container.Configure(x => x.For<IUrlSegmentGenerator>().Use<TransliteratingUrlSegmentGenerator>());
+			context.Services.RemoveAll(typeof(IUrlSegmentGenerator));
+			context.Services.AddSingleton<IUrlSegmentGenerator, TransliteratingUrlSegmentGenerator>();
 		}
 		void IInitializableModule.Initialize(InitializationEngine context) { }
 		void IInitializableModule.Uninitialize(InitializationEngine context) { }
