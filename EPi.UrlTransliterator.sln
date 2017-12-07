@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A9E29208-A2E6-496B-A554-7C32A2A8EFDF}"
 	ProjectSection(SolutionItems) = preProject
 		EPi.UrlTransliterator.nuspec = EPi.UrlTransliterator.nuspec
+		LICENSE = LICENSE
 		nuget.exe = nuget.exe
 		README.md = README.md
 	EndProjectSection
