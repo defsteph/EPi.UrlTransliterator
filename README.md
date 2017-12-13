@@ -16,3 +16,6 @@ Initial release.
 ### Release 2.0.0
 Now supports EPiServer CMS 11.
 Added MIT License.
+
+### Release 2.0.1
+Removed Creuna Trademark and updated icon.
